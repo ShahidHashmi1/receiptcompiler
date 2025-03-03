@@ -1,0 +1,11 @@
+<div class="upload-container">
+  <h2>Upload Receipt</h2>
+  
+  <input type="date" [(ngModel)]="selectedDate">
+  <input type="number" [(ngModel)]="selectedAmount" placeholder="Amount">
+  <input type="text" [(ngModel)]="selectedCategory" placeholder="Category">
+  
+  <input type="file" (change)="onFileSelected($event)" accept="image/*,application/pdf">
+  
+  <button (click)="uploadReceipt()">Upload</button>
+</div>

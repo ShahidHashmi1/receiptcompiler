@@ -1,0 +1,17 @@
+<div *ngFor="let receipt of filteredReceipts()" class="receipt-card">
+  <div>
+    <p><strong>Date:</strong> {{ receipt.date }}</p>
+    <p><strong>Amount:</strong> ${{ receipt.amount }}</p>
+    <p><strong>Category:</strong> {{ receipt.category }}</p>
+  </div>
+  
+  <!-- Display Image if it's an Image File -->
+  <img *ngIf="receipt.fileType.startsWith('image/')" [src]="receipt.imageUrl" alt="Receipt Image">
+  
+  <!-- Show Download Link if it's a PDF -->
+  <a *ngIf="receipt.fileType === 'application/pdf'" [href]="receipt.imageUrl" download="{{ receipt.fileName }}">
+    Download PDF
+  </a>
+
+  <button class="download-btn" (click)="downloadCSV()">Download CSV</button>
+</div>
